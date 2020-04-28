@@ -10,50 +10,53 @@ class Player(val name: String, val game: Game) {
                 if (game.board.tiles.first().x == tile.x) {
                     tileWasPlayed = true
                     var playedTile = Tile(tile.y, tile.x)
+                    println("$name plays $playedTile to connect to <" + game.board.tiles.first().x + ":" + game.board.tiles.first().y + "> on the board")
+
                     game.board.tiles.add(0, playedTile)
 
-                    println("$name played $playedTile")
                     hand.remove(tile)
-                    println("$name's hand: $hand")
 
                     break
                 }
                 else if (game.board.tiles.first().x == tile.y) {
                     tileWasPlayed = true
                     var playedTile = tile
+                    println("$name plays $playedTile to connect to <" + game.board.tiles.first().x + ":" + game.board.tiles.first().y + "> on the board")
+
                     game.board.tiles.add(0, playedTile)
 
-                    println("$name played $playedTile")
                     hand.remove(tile)
-                    println("$name's hand: $hand")
 
                     break
                 }
                 else if (game.board.tiles.last().y == tile.x) {
                     tileWasPlayed = true
                     var playedTile = tile
+                    println("$name plays $playedTile to connect to <" + game.board.tiles.last().x + ":" + game.board.tiles.last().y + "> on the board")
+
                     game.board.tiles.add(playedTile)
 
-                    println("$name played $playedTile")
                     hand.remove(tile)
-                    println("$name's hand: $hand")
 
                     break
                 }
                 else if (game.board.tiles.last().y == tile.y) {
                     tileWasPlayed = true
                     var playedTile = Tile(tile.y, tile.x)
+                    println("$name plays $playedTile to connect to <" + game.board.tiles.last().x + ":" + game.board.tiles.last().y + "> on the board")
+
                     game.board.tiles.add(playedTile)
 
-                    println("$name played $playedTile")
                     hand.remove(tile)
-                    println("$name's hand: $hand")
 
                     break
                 }
             }
             if (!tileWasPlayed && game.hasAvailableTiles()) {
-                hand.add(game.grabNewTile())
+                var grabbedTile = game.grabNewTile()
+                hand.add(grabbedTile)
+                println("$name can't play, drawing tile $grabbedTile")
+                play()
             }
         }
     }

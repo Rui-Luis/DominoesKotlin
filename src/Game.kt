@@ -12,12 +12,18 @@ class Game {
     }
 
     fun playFirstTile() {
-        board.tiles.add(availableTiles.removeAt(0))
-        println("Game starting with first tile: " + board.tiles)
+        var firstTile = availableTiles.removeAt(0)
+        board.tiles.add(firstTile)
+        println("Game starting with first tile: $firstTile")
     }
 
     fun printBoard() {
-        println("Board is now: " + board.tiles)
+        // println("Board is now: " +
+        print("Board is now: ")
+        for(tile in board.tiles) {
+            print("$tile ")
+        }
+        println("")
     }
 
     fun getHandTiles(): MutableList<Tile> {

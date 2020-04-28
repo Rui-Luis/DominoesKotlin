@@ -16,14 +16,14 @@ fun main() {
         playerOne.play()
         dominoes.printBoard()
         if (playerOne.hand.isEmpty()) {
-            println("$playerOne wins!")
+            println("Player $playerOne has won!")
             break
         }
 
         playerTwo.play()
         dominoes.printBoard()
         if (playerTwo.hand.isEmpty()) {
-            println("$playerTwo wins!")
+            println("Player $playerTwo has won!")
             break
         }
 
